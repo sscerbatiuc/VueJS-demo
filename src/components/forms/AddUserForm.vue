@@ -45,9 +45,11 @@
                     </b-form-checkbox-group>
                 </b-form-group>
 
+                <!--Note: This section is required for inheritance-->
                 <slot name="custom">
-
                 </slot>
+
+                <div class="clearfix">&nbsp;</div>
                 <b-button type="submit" variant="primary">Submit</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
             </b-form>
@@ -78,11 +80,25 @@
             }
         },
         methods: {
-            onSubmit(evt) {
+            /**
+             * This is a base method intended to be re-used in the child component.
+             * Note: in the child, it does not work with this.baseMethod('arg');
+             * @see ./mixins/AddUserFormMixin.js
+             */
+            baseMethod: function (arg) {
+                console.log("Parent: calling a function from the parent with args {" + args + "}")
+            },
+            /**
+             * This is an example of base method that should be overwritten in the child component.
+             */
+            overwrittenMethod: function () {
+                console.log('Parent: add user form method called.'); // eslint-disable-line
+            },
+            onSubmit: function (evt) {
                 evt.preventDefault();
                 alert(JSON.stringify(this.form))
             },
-            onReset(evt) {
+            onReset: function (evt) {
                 evt.preventDefault();
                 // Reset our form values
                 this.form.age = '';

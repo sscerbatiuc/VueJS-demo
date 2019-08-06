@@ -1,5 +1,5 @@
 <template>
-    <div class="hello">
+    <div>
         <h1 id="welcome-message">{{ msg }}</h1>
         <button class="btn btn-dark" v-b-modal.modal-core>Add user</button>
         <div id="separator">&nbsp;</div>
@@ -18,9 +18,9 @@
 </template>
 
 <script>
-    import AddUserForm from '@/components/forms/AddUserForm.vue'
-    import BaseModal from "@/components/modals/BaseModal";
-    import CustomAddUserForm from "@/components/forms/CustomAddUserForm";
+    import AddUserForm from '../../forms/AddUserForm.vue'
+    import BaseModal from "../../modals/BaseModal";
+    import CustomAddUserForm from "../../forms/CustomAddUserForm";
 
     export default {
         name: 'MainContainer',
