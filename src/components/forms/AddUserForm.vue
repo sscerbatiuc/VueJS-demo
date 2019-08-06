@@ -3,8 +3,8 @@
         <div>
             <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                 <!--Example 1: Using components from the bootstrap vue library as they are defined-->
-                <b-form-group id="input-group-2" label="Name" label-for="input-2">
-                    <b-form-input id="input-2"
+                <b-form-group id="input-group-name" label="Name" label-for="input-name">
+                    <b-form-input id="input-name"
                                   v-model="form.name"
                                   required
                                   placeholder="Please enter your name">
@@ -13,16 +13,16 @@
 
                 <!-- Example 2: Wrapped component. @see: forms/inputs/BaseInput -->
                 <!--The base prefix is suggested for presentational components. @see: https://is.gd/FTKIz2-->
+                <!--TODO: specify as props the id for the form-group as well-->
                 <base-input label="Password"
                             type="password"
                             v-model="form.password"
-                            placeholder="Please enter the password"
-                            required="true">
+                            placeholder="Please enter the password">
                 </base-input>
 
-                <b-form-group id="input-group-2" label="Name" label-for="input-2">
+                <b-form-group id="input-group-age" label="Name" label-for="input-age">
                     <b-form-input
-                            id="input-2"
+                            id="input-age"
                             type="number"
                             v-model="form.age"
                             required
@@ -30,7 +30,7 @@
                     </b-form-input>
                 </b-form-group>
 
-                <b-form-group id="input-group-3" label="Gender" label-for="input-3">
+                <b-form-group id="input-group-gender" label="Gender" label-for="input-gender">
                     <b-form-select
                             id="input-3"
                             v-model="form.gender"
@@ -39,12 +39,15 @@
                     </b-form-select>
                 </b-form-group>
 
-                <b-form-group id="input-group-4">
-                    <b-form-checkbox-group v-model="form.active" id="checkboxes-4">
+                <b-form-group id="input-group-checkboxes">
+                    <b-form-checkbox-group v-model="form.active" id="checkboxes-active">
                         <b-form-checkbox value="me">Active</b-form-checkbox>
                     </b-form-checkbox-group>
                 </b-form-group>
 
+                <slot name="custom">
+
+                </slot>
                 <b-button type="submit" variant="primary">Submit</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
             </b-form>

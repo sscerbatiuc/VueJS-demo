@@ -1,10 +1,17 @@
 <template>
     <div class="hello">
         <h1 id="welcome-message">{{ msg }}</h1>
-        <button v-b-modal.modal-1>Add user</button>
-        <base-modal title="Register user">
+        <button class="btn btn-dark" v-b-modal.modal-core>Add user</button>
+        <div id="separator">&nbsp;</div>
+        <button class="btn btn-info" v-b-modal.modal-custom>Add custom user</button>
+        <base-modal id="modal-core" title="Register user">
             <div slot="body">
                 <add-user-form/>
+            </div>
+        </base-modal>
+        <base-modal id="modal-custom" title="(Custom) Register user">
+            <div slot="body">
+                <custom-add-user-form/>
             </div>
         </base-modal>
     </div>
@@ -13,12 +20,15 @@
 <script>
     import AddUserForm from '@/components/forms/AddUserForm.vue'
     import BaseModal from "@/components/modals/BaseModal";
+    import CustomAddUserForm from "@/components/forms/CustomAddUserForm";
 
     export default {
         name: 'MainContainer',
         components: {
             'base-modal': BaseModal,
-            'add-user-form': AddUserForm},
+            'add-user-form': AddUserForm,
+            'custom-add-user-form': CustomAddUserForm
+        },
         props: {
             msg: String
         }
@@ -43,5 +53,10 @@
 
     a {
         color: #42b983;
+    }
+
+    #separator {
+        width: 20px;
+        display: inline;
     }
 </style>

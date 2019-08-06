@@ -1,5 +1,5 @@
 <template id="modal-template">
-    <b-modal id="modal-1" v-bind:title="title">
+    <b-modal v-bind:id="id" v-bind:title="title">
         <slot name="body">
             default body
         </slot>
@@ -11,6 +11,7 @@
         name: "CommandModal",
         template: "#modal-template",
         props: {
+            id: String,
             title: String
         }
     }
