@@ -1,18 +1,18 @@
 <template>
     <div id="app">
-        <img alt="Vue logo" src="./assets/logo.png">
-        <MainContainer msg="Inther Core Web 3.0"/>
+        <div id="nav">
+            <router-link class="btn btn-outline-info" to="/">Home</router-link>
+            |
+            <router-link class="btn btn-outline-secondary" to="/about">About</router-link>
+        </div>
+        <router-view/>
     </div>
 </template>
 
 <script>
-    import MainContainer from './components/layout/containers/MainContainer.vue'
 
     export default {
-        name: 'app',
-        components: {
-            MainContainer
-        }
+        name: 'app'
     }
 </script>
 
